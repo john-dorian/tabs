@@ -1,5 +1,5 @@
 {
-  "name": "jd-tabs",
+  "name": "@john-dorian/tabs",
   "version": "1.0.0",
   "description": "📑 For when JD needs help managing many things at the same time",
   "main": "index.js",
