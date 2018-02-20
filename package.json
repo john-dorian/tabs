@@ -1,6 +1,6 @@
 {
   "name": "@john-dorian/tabs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "📑 For when JD needs help managing many things at the same time",
   "private": false,
   "main": "index.js",

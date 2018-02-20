@@ -9,6 +9,8 @@ class JD_Tabs {
 
 		this.options = options;
 
+		this.options.delay = this.options.delay ? parseInt(this.options.delay) : 300;
+
 		this.initElems();
 		this.buildTabsListeners();
 	}
@@ -170,7 +172,7 @@ class JD_Tabs {
 	determineDeletable(event) {
 		const target = event.target;
 
-		if (target.dataset.deletables !== null) {
+		if (target.dataset.deletable) {
 			this.deleteTab(event, target);
 
 			this.initElems();
@@ -184,30 +186,12 @@ class JD_Tabs {
 		}
 	}
 
-	deleteTab(event) {
-		const target = event.target;
-		const panel = this.tabsElem.getElementById(target.getAttribute('aria-controls'));
+	deleteTab(event, tab) {
+		tab = tab || event.target;
+		const panel = this.tabsElem.getElementById(tab.getAttribute('aria-controls'));
 
-		target.parentElement.removeChild(target);
+		tab.parentElement.removeChild(tab);
 		panel.parentElement.removeChild(panel);
-	}
-
-	determineDelay() {
-		const hasDelay = !!this.options.delay;
-		let delay = 0;
-
-		if (hasDelay) {
-			const delayValue = this.options.delay;
-			
-			if (delayValue) {
-				delay = delayValue;
-			}
-			else {
-				delay = 300;
-			}
-		}
-
-		return delay;
 	}
 
 	focusEventHandler(event) {
