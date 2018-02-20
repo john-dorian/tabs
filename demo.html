@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>John Dorian — Tabs — Demo</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" integrity="sha256-2k1KVsNPRXxZOsXQ8aqcZ9GOOwmJTMoOB5o5Qp1d6/s=" crossorigin="anonymous" />
+	<style>
+		[hidden] {
+			display: none;
+		}
+
+		.tabs {
+			width: 20em;
+			font-family: "lucida grande", sans-serif;
+		}
+
+		[role="tablist"] {
+			margin: 0 0 -.1em;
+			overflow: visible;
+		}
+
+		[role="tab"] {
+			position: relative;
+			margin: 0;
+			padding: .3em .5em .4em;
+			border: 1px solid hsl(219, 1%, 72%);
+			border-radius: .2em .2em 0 0;
+			box-shadow: 0 0 .2em hsl(219, 1%, 72%);
+			overflow: visible;
+			font-family: inherit;
+			font-size: inherit;
+			background: hsl(220, 20%, 94%);
+		}
+
+		[role="tab"]:hover::before,
+		[role="tab"]:focus::before,
+		[role="tab"][aria-selected="true"]::before {
+			position: absolute;
+			bottom: 100%;
+			right: -1px;
+			left: -1px;
+			border-radius: 0.2em 0.2em 0 0;
+			border-top: 3px solid hsl(20, 96%, 48%);
+			content: '';
+		}
+
+		[role="tab"][aria-selected="true"] {
+			border-radius: 0;
+			background: hsl(220, 43%, 99%);
+			outline: 0;
+		}
+
+		[role="tab"][aria-selected="true"]:not(:focus):not(:hover)::before {
+			border-top: 5px solid hsl(218, 96%, 48%);
+		}
+
+		[role="tab"][aria-selected="true"]::after {
+			position: absolute;
+			z-index: 3;
+			bottom: -1px;
+			right: 0;
+			left: 0;
+			height: .3em;
+			background: hsl(220, 43%, 99%);
+			box-shadow: none;
+			content: '';
+		}
+
+		[role="tab"]:hover,
+		[role="tab"]:focus,
+		[role="tab"]:active {
+			outline: 0;
+			border-radius: 0;
+			color: inherit;
+		}
+
+		[role="tab"]:hover::before,
+		[role="tab"]:focus::before {
+			border-color: hsl(20, 96%, 48%);
+		}
+
+		[role="tabpanel"] {
+			position: relative;
+			z-index: 2;
+			padding: .5em .5em .7em;
+			border: 1px solid hsl(219, 1%, 72%);
+			border-radius: 0 .2em .2em .2em;
+			box-shadow: 0 0 .2em hsl(219, 1%, 72%);
+			background: hsl(220, 43%, 99%);
+		}
+
+		[role="tabpanel"]:focus {
+			border-color: hsl(20, 96%, 48%);
+			box-shadow: 0 0 .2em hsl(20, 96%, 48%);
+			outline: 0;
+		}
+
+		[role="tabpanel"]:focus::after {
+			position: absolute;
+			bottom: 0;
+			right: -1px;
+			left: -1px;
+			border-bottom: 3px solid hsl(20, 96%, 48%);
+			border-radius: 0 0 0.2em 0.2em;
+			content: '';
+		}
+
+		[role="tabpanel"] p {
+			margin: 0;
+		}
+
+		[role="tabpanel"] * + p {
+			margin-top: 1em;
+		}
+	</style>
+</head>
+<body>
+	<header class="hero is-primary">
+		<div class="container">
+			<div class="hero-body">
+				<h1 class="title">Tabs</h1>
+				<h2 class="subtitle">Demo page</h2>
+			</div>
+		</div>
+	</header>
+
+	<div class="section">
+		<div class="container" data-jd-tabs>
+			<ul role="tablist">
+				<button role="tab" aria-selected="true" aria-controls="tab-patients" id="tab-label-patients">
+					Patients
+				</button>
+				<button role="tab" aria-selected="false" aria-controls="tab-doctors" id="tab-label-doctors" tabindex="-1">
+					Doctors
+				</button>
+				<button role="tab" aria-selected="false" aria-controls="tab-janitors" id="tab-label-janitors" tabindex="-1" data-deletable="">
+					Janitors
+				</button>
+			</ul>
+
+			<div tabindex="0" role="tabpanel" class="content" id="tab-patients" aria-labelledby="tab-label-patients">
+				<h3>Patients</h3>
+
+				<ul>
+					<li>Jill Tracy</li>
+					<li>Patricia Wilk</li>
+					<li>Herbert</li>
+					<li>Ben Sullivan</li>
+				</ul>
+			</div>
+			<div tabindex="0" role="tabpanel" class="content" id="tab-doctors" aria-labelledby="tab-label-doctors" hidden>
+				<h3>Doctors</h3>
+
+				<ul>
+					<li>John Dorian</li>
+					<li>Christopher Turk</li>
+					<li>Perry Cox</li>
+					<li>Kim Briggs</li>
+				</ul>
+			</div>
+			<div tabindex="0" role="tabpanel" class="content" id="tab-janitors" aria-labelledby="tab-label-janitors" hidden>
+				<h3>Janitors</h3>
+
+				<ul>
+					<li>Glen Matthews</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="./index.js"></script>
+</body>
+</html>
