@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/john-dorian/tabs#readme",
   "devDependencies": {
-    "eslint": "^4.17.0"
+    "eslint": "^10.13.0"
   }
 }
